@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mods R.E.P.O.</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: linear-gradient(135deg, #f2a93b 0%, #f77f3c 100%);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .bg-wrapper {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f2a93b 0%, #f77f3c 100%);
+  }
+
+  .pattern {
+    position: fixed;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj4KPGltYWdlIGhyZWY9ImRhdGE6aW1hZ2UvanBlZztiYXNlNjQsLzlqLzJ3Q0VBQWdHQmdjR0JRZ0hCd2NKQ1FnS0RCUU5EQXNMREJrU0V3OFVIUm9mSGgwYUhCd2dKQzRuSUNJc0l4d2NLRGNwTERBeE5EUTBIeWM1UFRneVBDNHpORElCQ1FrSkRBc01HQTBOR0RJaEhDRXlNakl5TWpJeU1qSXlNakl5TWpJeU1qSXlNakl5TWpJeU1qSXlNakl5TWpJeU1qSXlNakl5TWpJeU1qSXlNakl5TXYvQUFCRUlBQ2dBS0FNQklnQUNFUUVERVFIL3hBR2lBQUFCQlFFQkFRRUJBUUFBQUFBQUFBQUFBUUlEQkFVR0J3Z0pDZ3NRQUFJQkF3TUNCQU1GQlFRRUFBQUJmUUVDQXdBRUVRVVNJVEZCQmhOUllRY2ljUlF5Z1pHaENDTkNzY0VWVXRId0pETmljb0lKQ2hZWEdCa2FKU1luS0NrcU5EVTJOemc1T2tORVJVWkhTRWxLVTFSVlZsZFlXVnBqWkdWbVoyaHBhbk4wZFhaM2VIbDZnNFNGaG9lSWlZcVNrNVNWbHBlWW1acWlvNlNscHFlb3FhcXlzN1MxdHJlNHVickN3OFRGeHNmSXljclMwOVRWMXRmWTJkcmg0dVBrNWVibjZPbnE4Zkx6OVBYMjkvajUrZ0VBQXdFQkFRRUJBUUVCQVFBQUFBQUFBQUVDQXdRRkJnY0lDUW9MRVFBQ0FRSUVCQU1FQndVRUJBQUJBbmNBQVFJREVRUUZJVEVHRWtGUkIyRnhFeUl5Z1FnVVFwR2hzY0VKSXpOUzhCVmljdEVLRmlRMDRTWHhGeGdaR2lZbktDa3FOVFkzT0RrNlEwUkZSa2RJU1VwVFZGVldWMWhaV21Oa1pXWm5hR2xxYzNSMWRuZDRlWHFDZzRTRmhvZUlpWXFTazVTVmxwZVltWnFpbzZTbHBxZW9xYXF5czdTMXRyZTR1YnJDdzhURnhzZkl5Y3JTMDlUVjF0ZlkyZHJpNCtUbDV1Zm82ZXJ5OC9UMTl2ZjQrZnIvMmdBTUF3RUFBaEVERVFBL0FQZTY0M3hmOFJkTThKdExCTWtqWEtJSCtjRkkrZW56WStZbkI0QVBRNXhna2F2aXZYZjdCMGhwbzhHNGxPeUlIMTlmd3J3T2FhRWF6cSt2K0laQkpiVzZScGJtNGhhWkpKcGVEd0dYSkNvM2ZqcmpJeFdFcXk5cDdOYjduWkhDUzloOVlsOE43THpORzgrUEhpSkxobWgwNkJVR0NCSkVWQkI2RWpKUFArOVhiL0RyNHJ0NHkxeVRUcjJDM3M1ZnN5dEdnZm1TVUU3dG1lbzI0T09vd2VTT25qL2lmNGJYdmhtMWJVYm5XdFBHbjNEZ1dzckZ3MHVlUUNvVTRPTW51T09TSzVXT0xXUERuaSsyaGtTUzIxTzJ1WTJVWjVEWkJCeU9vSUkrb05VbTl5SEdFdEZ1ZmJkRlkzaG5XeHJ1angzTEFDWlRzbFVkbUhmOGV0Yk5WQ2FuRlNXek02dEtWS2JwejNSNXg4VG5mN1ZwNmM3QWpuOGNpdVMwRnRDaWU2dGZFVnI5cHNKeWpvWkVNaVJzck0yR1VjNHl4SVBQVmdjQTE2VjQ3MFY5VTBkWjRGTFQycExoUjFaZTQvclhtbWtXRDM5eGR5SkFMaHJLMzg5YmNrQVNPVGhjNTRJR0NTTzUyMTVkU05TT0wwNm4wbEtkQ3BsTnA3dzdiM2IwKys1MG12VCtDZkVXbG1EVzlidHI2M2dZWEVTcTJHaXdEemhPU01IblBIVGl1YzF5L3dCTjFXNG5rczlPbFI1bmpacDVrUmNsQ3VIWEJMWktvRndjWUJQcVFiWGgvUmJ1SVBxbHBwS1hsdGQzS05DZ3ZHa1JFVTRDdUcrOXR5UUdPUUNNNHdGckptK3pIVWIxTERCdEZ1cFVnQ2NqQWNqQTlzZ2dlMksweGs1UXAzajZISms5Q2xXeEhMUG9yL2tkNzhNV2ZkcUtmd2ZJZng1cjBPdWI0RjZLK2o2TnVuWGJjWEIzdUQxVWRoL24xcnBLNmNKQndveFVqaXpXdEN0akp6aHQva3JCWGszeGYwbTEwTHc2L2lXd3Q0eGRRem9IalpjeHVHT0RrQWdqdDBOZXMxNXg0ZFArU1Zhai93QmRZUDhBMFl0YnloR1ZybzRvVlp3VFVYYSs1OCthZDQvMWJTZE9OdmJ4Z1F5RS9MOW9sQ2U0MnE0K3A5YzgxOUEvQ2pRN084OEphZDRodVkxZTh1dk1sMmhjUnhFeU45MWErVkgvQU9QS0gvcm8vd0RKYSt2ZmhCL3lTblFmK3VUL0FQb3g2VHBRZHJyWXFOZXJHL0xLMTlHZHZSUlJWbVIvLzlrPSIgd2lkdGg9IjU1IiBoZWlnaHQ9IjU1IiB4PSI0Mi41IiB5PSI0Mi41Ii8+Cjwvc3ZnPg==');
+    background-size: 140px 140px;
+    background-repeat: repeat;
+    transform: rotate(-12deg);
+    opacity: 0.5;
+    animation: drift 60s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes drift {
+    from { background-position: 0 0; }
+    to   { background-position: 900px 900px; }
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 40px 20px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 24px;
+    letter-spacing: 0.03em;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: #ffffff; }
+  .back-link::before { content: '← '; }
+
+  h1 {
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 0 6px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  .page-subtitle {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    margin: 0 0 40px;
+  }
+
+  /* =============================================
+     MODS — ajoute tes mods ici !
+     Duplique un bloc .mod-card pour en ajouter.
+  ============================================= */
+  .mods-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .mod-card {
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 12px;
+    padding: 20px;
+    width: 240px;
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .mod-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.22);
+  }
+
+  .mod-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.1);
+    border: 1px dashed rgba(255,255,255,0.4);
+  }
+
+  .mod-card h2 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+  }
+
+  .mod-card p {
+    margin: 0 0 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+
+  .mod-card a {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: background 0.15s;
+  }
+  .mod-card a:hover { background: rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+  <div class="bg-wrapper">
+    <div class="pattern"></div>
+    <div class="content">
+      <a class="back-link" href="index.html">Accueil</a>
+      <h1>Mods R.E.P.O.</h1>
+      <p class="page-subtitle">Mes mods pour R.E.P.O.</p>
+
+      <div class="mods-grid">
+
+        <!-- =============================================
+             EXEMPLE DE MOD — copie ce bloc pour en ajouter !
+             Remplace : l'image src, le nom, la description, et le lien.
+             Tu peux mettre "" dans src si tu n'as pas d'image.
+        ============================================= -->
+        <div class="mod-card">
+          <img src="baguettemod.png" alt="Nom du mod">
+          <h2>BaguetteMod</h2>
+          <p>Replaces the baseball bat with a French baguette. Oui oui baguette ! for english</p>
+          <a href="https://thunderstore.io/c/repo/p/axioulle/BaguetteMod/" target="_blank">Télécharger</a>
+        </div>
+
+        <!-- Ajoute tes autres mods ici -->
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
