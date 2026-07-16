@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Fond animé</title>
+<title>Site bynex</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <style>
   html, body {
@@ -40,11 +40,18 @@
     to   { background-position: 900px 900px; }
   }
 
+  .center-content {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
   .welcome-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
     margin: 0;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
@@ -52,15 +59,10 @@
     font-weight: bold;
     text-align: center;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
-    z-index: 2;
     white-space: nowrap;
   }
 
   .subtitle-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 20px);
     margin: 0;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
@@ -68,20 +70,15 @@
     font-weight: normal;
     text-align: center;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    z-index: 2;
     white-space: nowrap;
   }
 
   .images-row {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 70px);
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 24px;
-    z-index: 2;
   }
 
   .mod-card {
@@ -116,23 +113,126 @@
     text-shadow: 0 1px 6px rgba(0,0,0,0.4);
     letter-spacing: 0.04em;
   }
+
+  .github-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .github-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 24px;
+    padding: 8px 16px;
+    color: #ffffff;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .github-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.28);
+  }
+
+  .gh-avatar-placeholder, .gh-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.5);
+    flex-shrink: 0;
+  }
+
+  .gh-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+
+  .github-label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  }
+
+  .gh-stats {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+  }
 </style>
 </head>
 <body>
   <div class="bg-wrapper">
     <div class="pattern"></div>
-    <h1 class="welcome-text">Bienvenue sur mon site</h1>
-    <p class="subtitle-text">mes mods</p>
-    <div class="images-row">
-      <a class="mod-card" href="repo.html">
-        <img class="mod-image" src="repo.jpg" alt="R.E.P.O.">
-        <span class="mod-label">R.E.P.O.</span>
-      </a>
-      <a class="mod-card" href="peak.html">
-        <img class="mod-image" src="peak.png" alt="PEAK">
-        <span class="mod-label">PEAK</span>
-      </a>
+    <div class="center-content">
+      <h1 class="welcome-text">Bienvenue sur mon site</h1>
+      <p class="subtitle-text">mes mods</p>
+      <div class="images-row">
+        <a class="mod-card" href="repo.html">
+          <img class="mod-image" src="repo.jpg" alt="R.E.P.O.">
+          <span class="mod-label">R.E.P.O.</span>
+        </a>
+        <a class="mod-card" href="peak.html">
+          <img class="mod-image" src="peak.png" alt="PEAK">
+          <span class="mod-label">PEAK</span>
+        </a>
+      </div>
+
+      <div class="github-row" id="github-row">
+        <a class="github-card" id="gh-card-BrokenGameStudio" href="https://github.com/BrokenGameStudio" target="_blank" rel="noopener">
+          <div class="gh-avatar-placeholder"></div>
+          <div class="gh-info">
+            <span class="github-label">BrokenGameStudio</span>
+            <span class="gh-stats">chargement...</span>
+          </div>
+        </a>
+        <a class="github-card" id="gh-card-Axelfla" href="https://github.com/Axelfla" target="_blank" rel="noopener">
+          <div class="gh-avatar-placeholder"></div>
+          <div class="gh-info">
+            <span class="github-label">Axelfla</span>
+            <span class="gh-stats">chargement...</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
+
+  <script>
+    async function loadGithubCard(username) {
+      const card = document.getElementById('gh-card-' + username);
+      if (!card) return;
+      const avatarEl = card.querySelector('.gh-avatar-placeholder');
+      const statsEl = card.querySelector('.gh-stats');
+      try {
+        const res = await fetch('https://api.github.com/users/' + username);
+        if (!res.ok) throw new Error('status ' + res.status);
+        const data = await res.json();
+
+        const img = document.createElement('img');
+        img.className = 'gh-avatar';
+        img.src = data.avatar_url;
+        img.alt = username;
+        avatarEl.replaceWith(img);
+
+        const repos = data.public_repos ?? 0;
+        const followers = data.followers ?? 0;
+        statsEl.textContent = repos + ' repos · ' + followers + ' followers';
+      } catch (err) {
+        statsEl.textContent = 'Profil GitHub';
+      }
+    }
+
+    loadGithubCard('BrokenGameStudio');
+    loadGithubCard('Axelfla');
+  </script>
 </body>
 </html>
