@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>site de bynex</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f2a93b 0%, #f77f3c 100%);
+  }
+
+  .bg-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f2a93b 0%, #f77f3c 100%);
+  }
+
+  .pattern {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj4KPGltYWdlIGhyZWY9ImRhdGE6aW1hZ2UvanBlZztiYXNlNjQsLzlqLzJ3Q0VBQWdHQmdjR0JRZ0hCd2NKQ1FnS0RCUU5EQXNMREJrU0V3OFVIUm9mSGgwYUhCd2dKQzRuSUNJc0l4d2NLRGNwTERBeE5EUTBIeWM1UFRneVBDNHpORElCQ1FrSkRBc01HQTBOR0RJaEhDRXlNakl5TWpJeU1qSXlNakl5TWpJeU1qSXlNakl5TWpJeU1qSXlNakl5TWpJeU1qSXlNakl5TWpJeU1qSXlNakl5TXYvQUFCRUlBQ2dBS0FNQklnQUNFUUVERVFIL3hBR2lBQUFCQlFFQkFRRUJBUUFBQUFBQUFBQUFBUUlEQkFVR0J3Z0pDZ3NRQUFJQkF3TUNCQU1GQlFRRUFBQUJmUUVDQXdBRUVRVVNJVEZCQmhOUllRY2ljUlF5Z1pHaENDTkNzY0VWVXRId0pETmljb0lKQ2hZWEdCa2FKU1luS0NrcU5EVTJOemc1T2tORVJVWkhTRWxLVTFSVlZsZFlXVnBqWkdWbVoyaHBhbk4wZFhaM2VIbDZnNFNGaG9lSWlZcVNrNVNWbHBlWW1acWlvNlNscHFlb3FhcXlzN1MxdHJlNHVickN3OFRGeHNmSXljclMwOVRWMXRmWTJkcmg0dVBrNWVibjZPbnE4Zkx6OVBYMjkvajUrZ0VBQXdFQkFRRUJBUUVCQVFBQUFBQUFBQUVDQXdRRkJnY0lDUW9MRVFBQ0FRSUVCQU1FQndVRUJBQUJBbmNBQVFJREVRUUZJVEVHRWtGUkIyRnhFeUl5Z1FnVVFwR2hzY0VKSXpOUzhCVmljdEVLRmlRMDRTWHhGeGdaR2lZbktDa3FOVFkzT0RrNlEwUkZSa2RJU1VwVFZGVldWMWhaV21Oa1pXWm5hR2xxYzNSMWRuZDRlWHFDZzRTRmhvZUlpWXFTazVTVmxwZVltWnFpbzZTbHBxZW9xYXF5czdTMXRyZTR1YnJDdzhURnhzZkl5Y3JTMDlUVjF0ZlkyZHJpNCtUbDV1Zm82ZXJ5OC9UMTl2ZjQrZnIvMmdBTUF3RUFBaEVERVFBL0FQZTY0M3hmOFJkTThKdExCTWtqWEtJSCtjRkkrZW56WStZbkI0QVBRNXhna2F2aXZYZjdCMGhwbzhHNGxPeUlIMTlmd3J3T2FhRWF6cSt2K0laQkpiVzZScGJtNGhhWkpKcGVEd0dYSkNvM2ZqcmpJeFdFcXk5cDdOYjduWkhDUzloOVlsOE43THpORzgrUEhpSkxobWgwNkJVR0NCSkVWQkI2RWpKUFArOVhiL0RyNHJ0NHkxeVRUcjJDM3M1ZnN5dEdnZm1TVUU3dG1lbzI0T09vd2VTT25qL2lmNGJYdmhtMWJVYm5XdFBHbjNEZ1dzckZ3MHVlUUNvVTRPTW51T09TSzVXT0xXUERuaSsyaGtTUzIxTzJ1WTJVWjVEWkJCeU9vSUkrb05VbTl5SEdFdEZ1ZmJkRlkzaG5XeHJ1angzTEFDWlRzbFVkbUhmOGV0Yk5WQ2FuRlNXek02dEtWS2JwejNSNXg4VG5mN1ZwNmM3QWpuOGNpdVMwRnRDaWU2dGZFVnI5cHNKeWpvWkVNaVJzck0yR1VjNHl4SVBQVmdjQTE2VjQ3MFY5VTBkWjRGTFQycExoUjFaZTQvclhtbWtXRDM5eGR5SkFMaHJLMzg5YmNrQVNPVGhjNTRJR0NTTzUyMTVkU05TT0wwNm4wbEtkQ3BsTnA3dzdiM2IwKys1MG12VCtDZkVXbG1EVzlidHI2M2dZWEVTcTJHaXdEemhPU01IblBIVGl1YzF5L3dCTjFXNG5rczlPbFI1bmpacDVrUmNsQ3VIWEJMWktvRndjWUJQcVFiWGgvUmJ1SVBxbHBwS1hsdGQzS05DZ3ZHa1JFVTRDdUcrOXR5UUdPUUNNNHdGckptK3pIVWIxTERCdEZ1cFVnQ2NqQWNqQTlzZ2dlMksweGs1UXAzajZISms5Q2xXeEhMUG9yL2tkNzhNV2ZkcUtmd2ZJZng1cjBPdWI4RjZLK2o2TnVuWGJjWEIzdUQxVWRoL24xcnBLNmNKQndveFVqaXpXdEN0akp6aHQva3JCWGszeGYwbTEwTHc2L2lXd3Q0eGRRem9IalpjeHVHT0RrQWdqdDBOZXMxNXg4ZFArU1Zhai93QmRZUDhBMFl0YnloR1ZybzRvVlp3VFVYYSs1OCthZDQvMWJTZE9OdmJ4Z1F5RS9MOW9sQ2U0MnE0K3A5YzgxOUEvQ2pRN084OEphZDRodVkxZTh1dk1sMmhjUnhFeU45MWErVkgvQU9QS0gvcm8vd0RKYSt2ZmhCL3lTblFmK3VUL0FQb3g2VHBRZHJyWXFOZXJHL0xLMTlHZHZSUlJWbVIvLzlrPSIgd2lkdGg9IjU1IiBoZWlnaHQ9IjU1IiB4PSI0Mi41IiB5PSI0Mi41Ii8+Cjwvc3ZnPg==');
+    background-size: 140px 140px;
+    background-repeat: repeat;
+    transform: rotate(-12deg);
+    opacity: 0.5;
+    animation: drift 60s linear infinite;
+  }
+
+  @keyframes drift {
+    from { background-position: 0 0; }
+    to   { background-position: 900px 900px; }
+  }
+
+  .center-content {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .welcome-text {
+    margin: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+  }
+
+  .subtitle-text {
+    margin: 0;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+  }
+
+  .images-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .mod-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .mod-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+  }
+
+  .mod-image {
+    width: 160px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .mod-label {
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    letter-spacing: 0.04em;
+  }
+
+  .github-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .github-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 24px;
+    padding: 8px 16px;
+    color: #000000;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .github-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.28);
+  }
+
+  .gh-avatar-placeholder, .gh-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.5);
+    flex-shrink: 0;
+  }
+
+  .gh-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+
+  .github-label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  }
+
+  .gh-stats {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #000000;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-wrapper">
+    <div class="pattern"></div>
+    <div class="center-content">
+      <h1 class="welcome-text">Bienvenue sur mon site</h1>
+      <p class="subtitle-text">mes mods</p>
+      <div class="images-row">
+        <a class="mod-card" href="repo.html">
+          <img class="mod-image" src="repo.jpg" alt="R.E.P.O.">
+          <span class="mod-label">R.E.P.O.</span>
+        </a>
+        <a class="mod-card" href="peak.html">
+          <img class="mod-image" src="peak.png" alt="PEAK">
+          <span class="mod-label">PEAK</span>
+        </a>
+      </div>
+
+      <div class="github-row" id="github-row">
+        <a class="github-card" id="gh-card-BrokenGameStudio" href="https://github.com/BrokenGameStudio" target="_blank" rel="noopener">
+          <div class="gh-avatar-placeholder"></div>
+          <div class="gh-info">
+            <span class="github-label">BrokenGameStudio</span>
+            <span class="gh-stats">chargement...</span>
+          </div>
+        </a>
+        <a class="github-card" id="gh-card-Axelfla" href="https://github.com/Axelfla" target="_blank" rel="noopener">
+          <div class="gh-avatar-placeholder"></div>
+          <div class="gh-info">
+            <span class="github-label">Axelfla</span>
+            <span class="gh-stats">chargement...</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function loadGithubCard(username) {
+      const card = document.getElementById('gh-card-' + username);
+      if (!card) return;
+      const avatarEl = card.querySelector('.gh-avatar-placeholder');
+      const statsEl = card.querySelector('.gh-stats');
+      try {
+        const res = await fetch('https://api.github.com/users/' + username);
+        if (!res.ok) throw new Error('status ' + res.status);
+        const data = await res.json();
+
+        const img = document.createElement('img');
+        img.className = 'gh-avatar';
+        img.src = data.avatar_url;
+        img.alt = username;
+        avatarEl.replaceWith(img);
+
+        const repos = data.public_repos ?? 0;
+        const followers = data.followers ?? 0;
+        statsEl.textContent = repos + ' repos · ' + followers + ' followers';
+      } catch (err) {
+        statsEl.textContent = 'Profil GitHub';
+      }
+    }
+
+    loadGithubCard('BrokenGameStudio');
+    loadGithubCard('Axelfla');
+  </script>
+</body>
+</html>
