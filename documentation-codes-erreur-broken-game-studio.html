@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentation des codes de retour de l'installateur EXE de BrokenGame Studio pour Microsoft Store.">
+  <title>Documentation des codes de retour — BrokenGame Studio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #182230;
+      --muted: #5c6878;
+      --border: #e1e7ef;
+      --accent: #3157c8;
+      --accent-soft: #edf2ff;
+      --green: #16794b;
+      --green-bg: #eaf7ef;
+      --orange: #98600a;
+      --orange-bg: #fff5df;
+      --red: #b42318;
+      --red-bg: #fff0ee;
+      --shadow: 0 12px 35px rgba(24, 34, 48, .07);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      background: #111c35;
+      color: white;
+      padding: 54px 24px 46px;
+    }
+    .header-inner, main, footer { max-width: 1000px; margin: 0 auto; }
+    .eyebrow {
+      color: #b9c8ff;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+    h1 { margin: 10px 0 8px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; }
+    header p { color: #d5def2; margin: 0; max-width: 700px; }
+    main { padding: 32px 20px 56px; }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      color: var(--muted);
+      font-size: .92rem;
+      margin: 0 0 24px;
+    }
+    .notice, .section, .error-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+    .notice { padding: 18px 20px; margin: 22px 0 30px; border-left: 4px solid var(--accent); }
+    .notice strong { display: block; margin-bottom: 4px; }
+    h2 { font-size: 1.45rem; margin: 34px 0 14px; }
+    h3 { font-size: 1.12rem; margin: 0 0 8px; }
+    p { margin: 7px 0 12px; }
+    .table-wrap { overflow-x: auto; background: white; border: 1px solid var(--border); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; min-width: 570px; }
+    th, td { text-align: left; padding: 12px 15px; border-bottom: 1px solid var(--border); }
+    th { background: #f0f3f9; font-size: .88rem; }
+    tr:last-child td { border-bottom: 0; }
+    code { background: #eef1f6; color: #26344b; border-radius: 5px; padding: 2px 6px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .error-card { padding: 18px; box-shadow: none; }
+    .error-card p { color: var(--muted); font-size: .95rem; }
+    .code-line { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+    .number { font: 700 1rem ui-monospace, SFMono-Regular, Consolas, monospace; background: #eef1f6; border-radius: 7px; padding: 4px 9px; }
+    .tag { font-size: .75rem; font-weight: 700; border-radius: 99px; padding: 3px 9px; }
+    .success { color: var(--green); background: var(--green-bg); }
+    .warning { color: var(--orange); background: var(--orange-bg); }
+    .danger { color: var(--red); background: var(--red-bg); }
+    .section { padding: 20px; margin-top: 16px; box-shadow: none; }
+    ul { padding-left: 22px; }
+    li { margin: 5px 0; }
+    .small { color: var(--muted); font-size: .9rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { padding: 0 20px 32px; color: var(--muted); font-size: .88rem; }
+    @media (max-width: 600px) {
+      header { padding: 38px 20px; }
+      main { padding: 24px 14px 40px; }
+    }
+    @media print {
+      body { background: white; }
+      header { background: white; color: #111; padding: 20px 0; }
+      header p, .eyebrow { color: #444; }
+      main { padding: 15px 0; }
+      .notice, .section, .error-card, .table-wrap { box-shadow: none; break-inside: avoid; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="eyebrow">Documentation technique</div>
+      <h1>Codes de retour de l'installateur EXE</h1>
+      <p>Référence des scénarios d'installation et des codes de retour utilisés pour la distribution du launcher BrokenGame Studio via le Microsoft Store.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="meta">
+      <span><strong>Projet :</strong> BrokenGame Studio</span>
+      <span><strong>Plateforme :</strong> Windows 10 / Windows 11</span>
+      <span><strong>Distribution :</strong> Microsoft Store — Partner Center</span>
+      <span><strong>Format :</strong> EXE (Win32)</span>
+    </div>
+
+    <div class="notice">
+      <strong>À lire avant configuration</strong>
+      Les codes personnalisés proposés dans cette documentation constituent une convention pour l'installateur. Ils ne sont pas imposés par Microsoft. L'installateur doit réellement renvoyer le code configuré dans Partner Center. Certains codes standards Windows peuvent être réutilisés si leur signification correspond exactement au scénario.
+    </div>
+
+    <h2>1. Tableau récapitulatif</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Scénario</th><th>Code proposé</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td>Installation réussie</td><td><code>0</code></td><td>Standard</td></tr>
+          <tr><td>Installation annulée par l'utilisateur</td><td><code>1223</code> ou <code>106</code></td><td>Windows / personnalisé</td></tr>
+          <tr><td>Application déjà installée</td><td><code>100</code></td><td>Personnalisé</td></tr>
+          <tr><td>Installation déjà en cours</td><td><code>1618</code> ou <code>101</code></td><td>Windows Installer / personnalisé</td></tr>
+          <tr><td>Espace disque insuffisant</td><td><code>112</code> ou <code>102</code></td><td>Windows / personnalisé</td></tr>
+          <tr><td>Redémarrage requis</td><td><code>3010</code> ou <code>103</code></td><td>Windows Installer / personnalisé</td></tr>
+          <tr><td>Échec réseau général</td><td><code>104</code></td><td>Personnalisé</td></tr>
+          <tr><td>Package rejeté par une stratégie de sécurité</td><td><code>1625</code> ou <code>105</code></td><td>Windows Installer / personnalisé</td></tr>
+          <tr><td>Serveur inaccessible</td><td><code>107</code></td><td>Personnalisé</td></tr>
+          <tr><td>Délai de connexion dépassé</td><td><code>108</code></td><td>Personnalisé</td></tr>
+          <tr><td>Téléchargement interrompu</td><td><code>109</code></td><td>Personnalisé</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>2. Description des scénarios</h2>
+    <div class="cards">
+      <article class="error-card">
+        <div class="code-line"><span class="number">0</span><span class="tag success">Succès</span></div>
+        <h3>Installation réussie</h3>
+        <p>L'installation s'est terminée correctement. L'application peut être lancée normalement.</p>
+        <strong>Action :</strong> aucune intervention nécessaire.
+      </article>
+      <article class="error-card">
+        <div class="code-line"><span class="number">100</span><span class="tag warning">Information</span></div>
+        <h3>Application déjà installée</h3>
+        <p>Une installation existante a été détectée sur l'appareil.</p>
+        <strong>Action :</strong> vérifier si une mise à jour est disponible et éviter une seconde installation inutile.
+      </article>
+      <article class="error-card">
+        <div class="code-line"><span class="number">101</span><span class="tag warning">En attente</span></div>
+        <h3>Installation déjà en cours</h3>
+        <p>Une autre opération d'installation est déjà active.</p>
+        <strong>Action :</strong> attendre sa fin avant de relancer l'installation.
+      </article>
+      <article class="error-card">
+        <div class="code-line"><span class="number">102</span><span class="tag danger">Erreur</span></div>
+        <h3>Espace disque insuffisant</h3>
+        <p>L'appareil ne dispose pas de suffisamment d'espace libre pour installer l'application.</p>
+        <strong>Action :</strong> libérer de l'espace disque puis réessayer.
+      </article>
+      <article class="error-card">
+        <div class="code-line"><span class="number">103</span><span class="tag warning">Redémarrage</span></div>
+        <h3>Redémarrage requis</h3>
+        <p>Un redémarrage de Windows est nécessaire pour finaliser l'installation.</p>
+        <strong>Action :</strong> informer l'utilisateur et lui demander de redémarrer l'appareil.
+      </article>
+      <article class="error-card">
+        <div class="code-line"><span class="number">104</span><span class="tag danger">Erreur</span></div>
+        <h3>Échec réseau général</h3>
+        <p>Une erreur réseau a empêché le téléchargement ou la récupération des ressources nécessaires.</p>
+        <strong>Action :</strong> vérifier la connexion Internet puis réessayer.
+      </article>
+      <article class="error-card">
+        <div class="code-line"><span class="number">105</span><span class="tag danger">Sécurité</span></div>
+        <h3>Package rejeté</h3>
+        <p>Windows a bloqué l'installation en raison d'une stratégie de sécurité appliquée sur l'appareil.</p>
+        <strong>Action :</strong> vérifier les stratégies de sécurité. Ne pas tenter de contourner les protections du système.
+      </article>
+      <article class="error-card">
+        <div class="code-line"><span class="number">106</span><span class="tag warning">Annulation</span></div>
+        <h3>Installation annulée</h3>
+        <p>L'utilisateur a volontairement annulé l'opération.</p>
+        <strong>Action :</strong> arrêter proprement l'installation. Ne pas présenter l'annulation comme une panne technique.
+      </article>
+    </div>
+
+    <h2>3. Sous-catégories des erreurs réseau</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Code</th><th>Erreur</th><th>Comportement attendu</th></tr></thead>
+        <tbody>
+          <tr><td><code>104</code></td><td>Erreur réseau générale</td><td>Afficher une erreur réseau et autoriser une nouvelle tentative.</td></tr>
+          <tr><td><code>107</code></td><td>Serveur inaccessible</td><td>Vérifier la disponibilité du serveur et réessayer ultérieurement.</td></tr>
+          <tr><td><code>108</code></td><td>Délai de connexion dépassé</td><td>Interrompre la tentative après expiration du délai et permettre de réessayer.</td></tr>
+          <tr><td><code>109</code></td><td>Téléchargement interrompu</td><td>Vérifier le fichier téléchargé avant toute reprise ou nouvelle tentative.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>4. Recommandations d'implémentation</h2>
+    <div class="section">
+      <ul>
+        <li>Chaque code doit correspondre à un seul scénario clairement identifié.</li>
+        <li>Le code <code>0</code> doit indiquer une installation réussie.</li>
+        <li>Les codes personnalisés doivent être déclarés dans Partner Center et renvoyés par le programme d'installation.</li>
+        <li>Ne pas renvoyer un code de succès si l'installation a échoué ou a été seulement partiellement effectuée.</li>
+        <li>Enregistrer les détails techniques dans les journaux d'installation, sans y inclure de données personnelles inutiles.</li>
+        <li>Vérifier le comportement réel des codes avec chaque version de l'installateur.</li>
+        <li>Ne pas confondre un code de retour de l'installateur avec un code d'erreur interne au launcher.</li>
+      </ul>
+    </div>
+
+    <h2>5. Références Microsoft</h2>
+    <div class="section">
+      <ul>
+        <li><a href="https://learn.microsoft.com/fr-fr/windows/win32/msi/error-codes" target="_blank" rel="noopener noreferrer">Codes d'erreur Windows Installer — Microsoft Learn</a></li>
+        <li><a href="https://learn.microsoft.com/fr-fr/windows/win32/debug/system-error-codes" target="_blank" rel="noopener noreferrer">Codes d'erreur système Windows — Microsoft Learn</a></li>
+        <li><a href="https://partner.microsoft.com/fr-fr/dashboard/win32apps" target="_blank" rel="noopener noreferrer">Microsoft Partner Center — Applications Win32</a></li>
+      </ul>
+      <p class="small">Les codes standards indiqués sont des références Windows ou Windows Installer ; leur interprétation dépend du programme d'installation utilisé. Les codes personnalisés 100 à 109 doivent être implémentés explicitement.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div>© BrokenGame Studio — 2026. Tous droits réservés.</div>
+    <div>Documentation technique — Codes de retour de l'installateur EXE.</div>
+  </footer>
+</body>
+</html>
